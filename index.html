@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetalDesign | Móveis e Gabinetes de Ferro e Metal</title>
+    <!-- Ícones e Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ========================================== -->
+    <!-- CÓDIGO DE MONETIZAÇÃO POR ACESSO (ADSENSE) -->
+    <!-- ========================================== -->
+    <!-- Substitua 'ca-pub-XXXXXXXXXXXXXXXX' pelo seu ID real de publisher do Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #e67e22;
+            --bg-light: #f4f4f4;
+            --text-dark: #333333;
+            --white: #ffffff;
+            --border: #dddddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* HEADER & NAVEGAÇÃO */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--secondary);
+        }
+
+        .admin-btn {
+            background: var(--secondary);
+            border: none;
+            padding: 8px 15px;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* BLOCO DE ANÚNCIO DE MONETIZAÇÃO */
+        .ad-container {
+            text-align: center;
+            padding: 10px;
+            margin: 20px auto;
+            max-width: 90%;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* SEÇÕES / ABAS */
+        .tab-content {
+            display: none;
+            padding: 40px 5%;
+            min-height: 70vh;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* BANNER INICIAL */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: opacity 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* FILTROS DE CATEGORIA */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* GRADE DE PRODUTOS */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: var(--secondary);
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .whatsapp-buy {
+            background-color: #25d366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* BLOG / ARTIGOS PARA ATRAIR TRÁFEGO E CLIQUE EM ANÚNCIOS */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .blog-snippet {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* MODAL ADMINISTRATIVO */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .about-section, .contact-section {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media(max-width: 768px) {
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="#" class="logo" onclick="switchTab('home')">Metal<span>Design</span></a>
+        <nav>
+            <ul>
+                <li><a onclick="switchTab('home')" class="tab-link active" id="link-home">Início</a></li>
+                <li><a onclick="switchTab('catalogo')" class="tab-link" id="link-catalogo">Catálogo</a></li>
+                <li><a onclick="switchTab('blog')" class="tab-link" id="link-blog">Blog & Dicas</a></li>
+                <li><a onclick="switchTab('sobre')" class="tab-link" id="link-sobre">Sobre Nós</a></li>
+                <li><a onclick="switchTab('contato')" class="tab-link" id="link-contato">Contato</a></li>
+            </ul>
+        </nav>
+        <button class="admin-btn" onclick="openAdminModal()"><i class="fa-solid fa-gear"></i> Painel / Config</button>
+    </header>
+
+    <!-- BLOCO DE ANÚNCIO (MONETIZAÇÃO POR ACESSO DO GOOGLE ADSENSE) -->
+    <div class="ad-container">
+        <script>
+            try {
+                document.write('<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>');
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (e) {
+                document.write('<span style="font-size: 0.85rem; color: #888;"><i class="fa-solid fa-rectangle-ad"></i> [Espaço Publicitário Ativo - Monetização por Visualização do Google AdSense]</span>');
+            }
+        </script>
+    </div>
+
+    <!-- ABA 1: INÍCIO -->
+    <section id="home" class="tab-content active" style="padding-top: 0;">
+        <div class="hero">
+            <h1>Gabinetes, Camas, Sofás e Mesas de Metal e Ferro</h1>
+            <p>Móveis robustos estruturados em cantoneiras metálicas e ferro de alta durabilidade para transformar o seu banheiro, quarto e sala.</p>
+            <button class="btn" onclick="switchTab('catalogo')">Ver Catálogo Completo</button>
+        </div>
+        <div style="padding: 50px 5%; text-align: center;">
+            <h2 style="margin-bottom: 30px;">Destaques em Ferro e Metal</h2>
+            <div id="home-featured-grid" class="product-grid"></div>
+        </div>
+    </section>
+
+    <!-- ABA 2: CATÁLOGO -->
+    <section id="catalogo" class="tab-content">
+        <h2 style="text-align: center; margin-bottom: 25px;">Nosso Catálogo de Produtos</h2>
+        
+        <!-- Filtros por Categoria -->
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
+            <button class="filter-btn" onclick="filterProducts('Gabinetes')">Gabinetes de Banheiro</button>
+            <button class="filter-btn" onclick="filterProducts('Camas')">Camas de Ferro</button>
+            <button class="filter-btn" onclick="filterProducts('Sofás')">Sofás de Ferro</button>
+            <button class="filter-btn" onclick="filterProducts('Mesas')">Mesas de Ferro</button>
+        </div>
+
+        <div id="catalog-grid" class="product-grid"></div>
+    </section>
+
+    <!-- ABA 3: BLOG & DICAS (Atrai visualizações e otimiza ganhos com anúncios) -->
+    <section id="blog" class="tab-content">
+        <h2 style="text-align: center; margin-bottom: 10px;">Blog de Decoração Industrial & Dicas Úteis</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">Artigos que geram tráfego contínuo e potencializam sua monetização.</p>
+        
+        <div class="blog-grid">
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Gabinete de Banheiro" class="blog-img">
+                <div class="blog-content">
+                    <h3 class="blog-title">Por que Escolher Gabinetes de Banheiro em Cantoneiras Metálicas?</h3>
+                    <p class="blog-snippet">Saiba como a estrutura em cantoneiras de ferro tratadas resiste perfeitamente à umidade do banheiro, unindo design moderno e alta vida útil.</p>
+                    <a href="#" class="read-more" onclick="alert('Artigo otimizado para buscas no Google!')">Ler Artigo Completo &rarr;</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80" alt="Camas de Ferro" class="blog-img">
+                <div class="blog-content">
+                    <h3 class="blog-title">Camas de Ferro Forjado: Durabilidade e Charme no Quarto</h3>
+                    <p class="blog-snippet">Descubra as vantagens estéticas e estruturais de optar por camas metálicas que nunca rangem e valorizam quartos minimalistas.</p>
+                    <a href="#" class="read-more" onclick="alert('Conteúdo popular para engajamento de leitores.')">Ler Artigo Completo &rarr;</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Sofás e Mesas de Ferro" class="blog-img">
+                <div class="blog-content">
+                    <h3 class="blog-title">Sofás e Mesas de Ferro: Como Integrar na Sala de Estar</h3>
+                    <p class="blog-snippet">Dicas de ouro para combinar estruturas metálicas escuras com estofados confortáveis e tampos de madeira maciça.</p>
+                    <a href="#" class="read-more" onclick="alert('Guia de decoração altamente buscado na web.')">Ler Artigo Completo &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABA 4: SOBRE NÓS -->
+    <section id="sobre" class="tab-content">
+        <div class="about-section">
+            <h2>Sobre a MetalDesign</h2>
+            <p style="line-height: 1.6; margin-bottom: 15px;">Somos especialistas na fabricação e curadoria de móveis em metal, utilizando cantoneiras de aço de alta resistência, gabinetes para banheiros protegidos contra oxidação, camas firmes e mesas exclusivas.</p>
+        </div>
+    </section>
+
+    <!-- ABA 5: CONTATO -->
+    <section id="contato" class="tab-content">
+        <div class="contact-section">
+            <h2>Fale Conosco</h2>
+            <p style="margin-bottom: 20px;">Dúvidas sobre projetos sob medida ou frete? Fale direto conosco:</p>
+            <p style="font-size: 1.2rem; margin-bottom: 20px;"><strong>WhatsApp:</strong> <span id="display-phone">(11) 99999-9999</span></p>
+            <a id="contact-whatsapp-link" href="#" target="_blank" class="whatsapp-buy" style="display: inline-flex; padding: 12px 25px;">
+                <i class="fa-brands fa-whatsapp"></i> Conversar no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- MODAL ADMINISTRATIVO -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAdminModal()">&times;</span>
+            <h2>Painel de Controle & Gestão</h2>
+            <hr style="margin: 15px 0;">
+            
+            <h3>Alterar WhatsApp de Vendas</h3>
+            <div class="form-group" style="margin-top: 10px;">
+                <label>Número (Ex: 5511988887777):</label>
+                <input type="text" id="phoneInput" placeholder="5511999999999">
+            </div>
+            <button class="btn" onclick="updatePhone()" style="margin-bottom: 25px; width: 100%;">Salvar Telefone</button>
+
+            <h3>Adicionar Novo Móvel</h3>
+            <div class="form-group">
+                <label>Nome do Produto:</label>
+                <input type="text" id="newTitle" placeholder="Ex: Gabinete Industrial">
+            </div>
+            <div class="form-group">
+                <label>Categoria:</label>
+                <select id="newCategory">
+                    <option value="Gabinetes">Gabinetes</option>
+                    <option value="Camas">Camas</option>
+                    <option value="Sofás">Sofás</option>
+                    <option value="Mesas">Mesas</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Preço (R$):</label>
+                <input type="text" id="newPrice" placeholder="R$ 950,00">
+            </div>
+            <div class="form-group">
+                <label>Link da Imagem (URL):</label>
+                <input type="text" id="newImg" placeholder="Cole o link da imagem">
+            </div>
+            <button class="btn" onclick="addNewProduct()" style="width: 100%; background: var(--primary);">Cadastrar Produto</button>
+        </div>
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>&copy; 2026 MetalDesign Gabinetes & Móveis Industriais. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- SCRIPT DE GERENCIAMENTO -->
+    <script>
+        let storeData = JSON.parse(localStorage.getItem('metalDesignData')) || {
+            whatsapp: "5511999999999",
+            products: [
+                { id: 1, title: "Gabinete de Banheiro em Metal com Cantoneiras", category: "Gabinetes", price: "R$ 980,00", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" },
+                { id: 2, title: "Cama de Ferro Solteiro/Casal Resistente", category: "Camas", price: "R$ 1.250,00", img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80" },
+                { id: 3, title: "Sofá Estruturado em Ferro Estilo Industrial", category: "Sofás", price: "R$ 1.890,00", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" },
+                { id: 4, title: "Mesa de Jantar de Ferro e Madeira Maciça", category: "Mesas", price: "R$ 1.450,00", img: "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?auto=format&fit=crop&w=600&q=80" }
+            ]
+        };
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            if(document.getElementById('link-' + tabId)) {
+                document.getElementById('link-' + tabId).classList.add('active');
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function renderProducts(categoryFilter = 'todos') {
+            const catalogGrid = document.getElementById('catalog-grid');
+            const homeGrid = document.getElementById('home-featured-grid');
+            
+            catalogGrid.innerHTML = '';
+            homeGrid.innerHTML = '';
+
+            let filtered = storeData.products;
+            if(categoryFilter !== 'todos') {
+                filtered = storeData.products.filter(p => p.category === categoryFilter);
+            }
+
+            filtered.forEach(p => {
+                catalogGrid.innerHTML += createProductCard(p);
+            });
+
+            storeData.products.slice(0, 4).forEach(p => {
+                homeGrid.innerHTML += createProductCard(p);
+            });
+
+            updateContactInfo();
+        }
+
+        function createProductCard(p) {
+            let msg = encodeURIComponent(`Olá! Tenho interesse no produto: ${p.title} (${p.price})`);
+            let waLink = `https://wa.me/${storeData.whatsapp}?text=${msg}`;
+            
+            return `
+                <div class="product-card">
+                    <img src="${p.img}" alt="${p.title}" class="product-img" onerror="this.src='https://images.unsplash.com/photo-1581428982868-e410dd047a90?auto=format&fit=crop&w=600&q=80'">
+                    <div class="product-info">
+                        <div>
+                            <div style="font-size: 0.8rem; color: #777; margin-bottom: 5px;">${p.category}</div>
+                            <h3 class="product-title">${p.title}</h3>
+                            <div class="product-price">${p.price}</div>
+                        </div>
+                        <a href="${waLink}" target="_blank" class="whatsapp-buy">
+                            <i class="fa-brands fa-whatsapp"></i> Comprar via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterProducts(cat) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderProducts(cat);
+        }
+
+        function updateContactInfo() {
+            document.getElementById('display-phone').innerText = storeData.whatsapp;
+            document.getElementById('contact-whatsapp-link').href = `https://wa.me/${storeData.whatsapp}?text=Olá,%20gostaria%20de%20tirar%20dúvidas%20sobre%20os%20móveis.`;
+        }
+
+        function openAdminModal() {
+            document.getElementById('phoneInput').value = storeData.whatsapp;
+            document.getElementById('adminModal').style.display = 'flex';
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        function updatePhone() {
+            let newPhone = document.getElementById('phoneInput').value.trim();
+            if(newPhone) {
+                storeData.whatsapp = newPhone;
+                saveAndRefresh();
+                alert('Telefone atualizado com sucesso!');
+                closeAdminModal();
+            }
+        }
+
+        function addNewProduct() {
+            let title = document.getElementById('newTitle').value;
+            let category = document.getElementById('newCategory').value;
+            let price = document.getElementById('newPrice').value;
+            let img = document.getElementById('newImg').value;
+
+            if(!title || !price || !img) {
+                alert('Preencha todos os campos.');
+                return;
+            }
+
+            storeData.products.push({ id: Date.now(), title, category, price, img });
+            saveAndRefresh();
+            
+            document.getElementById('newTitle').value = '';
+            document.getElementById('newPrice').value = '';
+            document.getElementById('newImg').value = '';
+
+            alert('Produto cadastrado!');
+            closeAdminModal();
+            switchTab('catalogo');
+        }
+
+        function saveAndRefresh() {
+            localStorage.setItem('metalDesignData', JSON.stringify(storeData));
+            renderProducts();
+        }
+
+        window.onload = function() {
+            renderProducts();
+        };
+    </script>
+</body>
+</html>
